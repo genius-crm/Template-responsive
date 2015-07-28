@@ -26,9 +26,9 @@
 	<input type="hidden" name="module" value="{$MODULE}">
 	<input type="hidden" name="action" value="SaveAjax">
 	<div class="quickCreateContent">
-		<div class="modal-body">
-			<table class="massEditTable table table-bordered">
-				<tr>
+		<div class="">
+
+
 				{assign var=COUNTER value=0}
 				{foreach key=FIELD_NAME item=FIELD_MODEL from=$RECORD_STRUCTURE name=blockfields}
 					{assign var="isReferenceField" value=$FIELD_MODEL->getFieldDataType()}
@@ -36,17 +36,17 @@
 					{assign var="refrenceListCount" value=count($refrenceList)}
                     {if $FIELD_MODEL->get('uitype') eq "19"}
                         {if $COUNTER eq '1'}
-                            <td></td><td></td></tr><tr>
+					<div class='span12'>
                             {assign var=COUNTER value=0}
                         {/if}
                     {/if}
 					{if $COUNTER eq 2}
-						</tr><tr>
+					</div>
 						{assign var=COUNTER value=1}
 					{else}
 						{assign var=COUNTER value=$COUNTER+1}
 					{/if}
-					<td class='fieldLabel'>
+					<div class='span6'>
 						{if $isReferenceField neq "reference"}<label class="muted pull-right">{/if}
 						{if $FIELD_MODEL->isMandatory() eq true && $isReferenceField neq "reference"} <span class="redColor">*</span> {/if}
 						{if $isReferenceField eq "reference"}
@@ -73,13 +73,13 @@
 							{vtranslate($FIELD_MODEL->get('label'), $MODULE)}
 						{/if}
 					{if $isReferenceField neq "reference"}</label>{/if}
-					</td>
-					<td class="fieldValue" {if $FIELD_MODEL->get('uitype') eq '19'} colspan="3" {assign var=COUNTER value=$COUNTER+1} {/if}>
+
+					<div class='span6' {if $FIELD_MODEL->get('uitype') eq '19'} {assign var=COUNTER value=$COUNTER+1} {/if}>
 						{include file=vtemplate_path($FIELD_MODEL->getUITypeModel()->getTemplateName(),$MODULE)}
-					</td>
+					</div>
+					</div>
+
 				{/foreach}
-				</tr>
-			</table>
 		</div>
 	</div>
 	<div class="modal-footer quickCreateActions">

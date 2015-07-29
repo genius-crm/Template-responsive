@@ -3312,4 +3312,4 @@ table.table.table-bordered.equalSplit.detailview-table tr th{background:#1560bd;
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover{border-top-color: #1560bd;}
 
-.table th{background-color:#1560bd;background-image:none;color:#fff;}
+.table th, .table tbody tr:hover td, .table tbody tr:hover th{background-color:#1560bd;background-image:none;color:#fff;}

@@ -3312,3 +3312,5 @@ table.table.table-bordered.equalSplit.detailview-table tr th{background:#008d4c;
 .listViewEntriesDiv .listViewHeaders th, .input-prepend .add-on, .input-append .add-on{background-color:#008d4c;}
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover{border-top-color: #008d4c;}
+
+.table th, .table tbody tr:hover td, .table tbody tr:hover th{background-color:#008d4c;background-image:none;color:#fff;}

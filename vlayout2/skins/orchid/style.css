@@ -3317,4 +3317,4 @@ table.table.table-bordered.equalSplit.detailview-table tr th{background:#c65479;
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover{border-top-color: #c65479;}
 
-.table th{background-color:#c65479;background-image:none;color:#fff;}
+.table th, .table tbody tr:hover td, .table tbody tr:hover th{background-color:#c65479;background-image:none;color:#fff;}

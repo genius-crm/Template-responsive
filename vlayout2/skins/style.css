@@ -119,7 +119,7 @@ span.value{color:#999999;}
 .redColor{float:left;}
 
 
-.container-fluid.editViewContainer.custom-edit-block .form-div table{width: 1024px !important;}
+/*.container-fluid.editViewContainer.custom-edit-block .form-div table{width: 1024px !important;}*/
 
 .navbar .dropdown-menu li a, .dropdown-menu li a{  padding: 7px 5px;font-size: 13px;}
 button#listViewPageJump{margin-right: 5px;}

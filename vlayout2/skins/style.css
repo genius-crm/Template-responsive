@@ -955,7 +955,9 @@ td.fieldValue.medium {
 }
 
 
-
+#calendarview .fc-header-right {
+	width: 30% !important;
+}
 
 
 

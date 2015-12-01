@@ -14,7 +14,7 @@
 	{assign var="moreMenus" value=$MENU_STRUCTURE->getMore()}
 	{assign var=NUMBER_OF_PARENT_TABS value = count(array_keys($moreMenus))}
 
-	<div class="navbar topMenus-mm" id="topMenus" style="overflow: hidden;">
+	<div class="navbar topMenus-mm" id="topMenus">
 		<div class="navbar-inner" id="nav-inner">
 			<div class="menuBar row-fluid">
 				{* overflow+height is required to avoid flickering UI due to responsive handling, overflow will be dropped later *}

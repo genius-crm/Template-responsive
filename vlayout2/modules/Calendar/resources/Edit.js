@@ -194,7 +194,7 @@ Vtiger_Edit_Js("Calendar_Edit_Js",{
         var thisInstance = this;
         this._super(container);
 
-        this.getRelatedContactElement().closest('td').find('.clearReferenceSelection').on('click',function(e){
+        this.getRelatedContactElement().closest('div.width20-per').find('.clearReferenceSelection').on('click',function(e){
             thisInstance.getRelatedContactElement().select2('data',[]);
         });
     },

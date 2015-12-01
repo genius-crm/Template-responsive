@@ -115,7 +115,7 @@ jQuery.Class("Vtiger_Edit_Js",{
 
 	openPopUp : function(e){
 		var thisInstance = this;
-		var parentElem = jQuery(e.target).closest('td');
+		var parentElem = jQuery(e.target).closest('div.width20-per');
 
 		var params = this.getPopUpParams(parentElem);
 
@@ -187,7 +187,7 @@ jQuery.Class("Vtiger_Edit_Js",{
 		});
 		container.find('.referenceModulesList').chosen().change(function(e){
 			var element = jQuery(e.currentTarget);
-			var closestTD = element.closest('td').next();
+			var closestTD = element.closest('div.width20-per').next();
 			var popupReferenceModule = element.val();
 			var referenceModuleElement = jQuery('input[name="popupReferenceModule"]', closestTD);
 			var prevSelectedReferenceModule = referenceModuleElement.val();
@@ -308,7 +308,7 @@ jQuery.Class("Vtiger_Edit_Js",{
 	registerClearReferenceSelectionEvent : function(container) {
 		container.find('.clearReferenceSelection').on('click', function(e){
 			var element = jQuery(e.currentTarget);
-			var parentTdElement = element.closest('td');
+			var parentTdElement = element.closest('div.width20-per');
 			var fieldNameElement = parentTdElement.find('.sourceField');
 			var fieldName = fieldNameElement.attr('name');
 			fieldNameElement.val('');
@@ -384,7 +384,7 @@ jQuery.Class("Vtiger_Edit_Js",{
 		var thisInstance = this;
 		container.on('click','.createReferenceRecord', function(e){
 			var element = jQuery(e.currentTarget);
-			var controlElementTd = element.closest('td');
+			var controlElementTd = element.closest('div.width20-per');
 
 			thisInstance.referenceCreateHandler(controlElementTd);
 		})
@@ -434,7 +434,7 @@ jQuery.Class("Vtiger_Edit_Js",{
 		var recordId = formElement.find('input[name="record"]').val();
 		formElement.find('.imageDelete').on('click',function(e){
 			var element = jQuery(e.currentTarget);
-			var parentTd = element.closest('td');
+			var parentTd = element.closest('div.width20-per');
 			var imageUploadElement = parentTd.find('[name="imagename[]"]');
 			var fieldInfo = imageUploadElement.data('fieldinfo');
 			var mandatoryStatus = fieldInfo.mandatory;

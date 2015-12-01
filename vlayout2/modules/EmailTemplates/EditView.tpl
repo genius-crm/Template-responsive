@@ -31,31 +31,36 @@
 				<a class="cancelLink" type="reset" onclick="javascript:window.history.back();">{vtranslate('LBL_CANCEL', $MODULE)}</a>
 			</span>
 		</div>
-		<table class="table table-bordered blockContainer showInlineTable">
-			<tr>
-				<th class="blockHeader" colspan="4">{vtranslate('SINGLE_EmailTemplates', $MODULE)}</th>
-			</tr>
-			<tr>
-				<td class="fieldLabel {$WIDTHTYPE}"><span class="redColor">*</span>{vtranslate('LBL_TEMPLATE_NAME', $MODULE)}</td>
-				<td class="fieldValue {$WIDTHTYPE}">
+		<div class="table table-bordered blockContainer showInlineTable">
+        	<div class="top_header_bar_drag">
+            <div class="main_heading email-template-heading">
+                 <div class="blockHeader" colspan="4">{vtranslate('SINGLE_EmailTemplates', $MODULE)}</div>
+            </div>
+            </div>
+			
+			<div>
+				<div class="width30-per fieldLabel {$WIDTHTYPE}"><span class="redColor">*</span>{vtranslate('LBL_TEMPLATE_NAME', $MODULE)}</div>
+				<div class="width20-per fieldValue {$WIDTHTYPE}">
 					<input id="{$MODULE}_editView_fieldName_templatename" type="text" class="input-large" data-validation-engine="validate[required]" name="templatename" value="{decode_html($RECORD->get('templatename'))}">
-			</tr>
-			<tr>
-				<td class="fieldLabel {$WIDTHTYPE}">{vtranslate('LBL_DESCRIPTION', $MODULE)}</td>
-				<td class="fieldValue {$WIDTHTYPE}"><textarea class="row-fluid" id="description" name="description">{decode_html($RECORD->get('description'))}</textarea></td>
-			</tr>
-		</table>
-		<table class="table table-bordered blockContainer showInlineTable">
-			<tr>
-				<th class="blockHeader" colspan="4">{vtranslate('LBL_EMAIL_TEMPLATE', $MODULE)} {vtranslate('LBL_DESCRIPTION', $MODULE)}</th>
-			</tr>
-			<tr>
-				<td class="fieldLabel {$WIDTHTYPE}"><span class="redColor">*</span>{vtranslate('LBL_SUBJECT', $MODULE)}</td>
-				<td class="fieldValue {$WIDTHTYPE}"><input id="{$MODULE}_editView_fieldName_subject" type="text" class="input-large" data-validation-engine="validate[required]" name="subject" value="{decode_html($RECORD->get('subject'))}"></td>
-			</tr>
-			<tr>
-				<td class="fieldLabel {$WIDTHTYPE}">{vtranslate('LBL_SELECT_FIELD_TYPE', $MODULE)}</td>
-				<td class="fieldValue {$WIDTHTYPE}">
+			</div>
+			
+				<div class="width30-per fieldLabel {$WIDTHTYPE}">{vtranslate('LBL_DESCRIPTION', $MODULE)}</div>
+				<div class="width20-per fieldValue {$WIDTHTYPE}"><textarea class="row-fluid" id="description" name="description">{decode_html($RECORD->get('description'))}</textarea></div>
+			
+		</div>
+		<div class="table table-bordered blockContainer showInlineTable">
+        	<div class="top_header_bar_drag">
+            <div class="main_heading">
+                 <div class="blockHeader" colspan="4">{vtranslate('LBL_EMAIL_TEMPLATE', $MODULE)} {vtranslate('LBL_DESCRIPTION', $MODULE)}</div>
+            </div>
+            </div>
+			
+			<div>
+				<div class="width30-per fieldLabel {$WIDTHTYPE}"><span class="redColor">*</span>{vtranslate('LBL_SUBJECT', $MODULE)}</div>
+				<div class="width20-per fieldValue {$WIDTHTYPE}"><input id="{$MODULE}_editView_fieldName_subject" type="text" class="input-large" data-validation-engine="validate[required]" name="subject" value="{decode_html($RECORD->get('subject'))}"></div>
+			
+				<div class="width30-per fieldLabel {$WIDTHTYPE}">{vtranslate('LBL_SELECT_FIELD_TYPE', $MODULE)}</div>
+				<div class="width20-per fieldValue {$WIDTHTYPE}">
 					<span class="filterContainer" >
 						<input type="hidden" name="moduleFields" data-value='{ZEND_JSON::encode($ALL_FIELDS)|escape}' />
 						<span class="span4 conditionRow">
@@ -77,9 +82,9 @@
 						</span>
 					</span>
 					
-				</td>
-			</tr>
-		</table>
+				</div>
+			</div>
+		</div>
 		<div class="row-fluid padding-bottom1per">
 			<textarea id="templatecontent" name="templatecontent">{$RECORD->get('body')}</textarea>
 		</div>

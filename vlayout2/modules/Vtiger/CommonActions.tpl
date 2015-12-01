@@ -23,7 +23,7 @@
                 <div class="row-fluid">
                     <div class="searchElement span8">
                         <div class="select-search">
-                            <select class="chzn-select" id="basicSearchModulesList" style="width:150px;">
+                            <select class="chzn-select" id="basicSearchModulesList" style="width:50px;"> <!-- width changed to 120px from 150px -->
                                 <option value="" class="globalSearch_module_All">{vtranslate('LBL_ALL_RECORDS', $MODULE_NAME)}</option>
                                 {foreach key=MODULE_NAME item=fieldObject from=$SEARCHABLE_MODULES}
                                     {if isset($SEARCHED_MODULE) && $SEARCHED_MODULE eq $MODULE_NAME && $SEARCHED_MODULE !== 'All'}

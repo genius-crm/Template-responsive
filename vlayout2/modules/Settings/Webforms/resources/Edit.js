@@ -476,7 +476,7 @@ Settings_Vtiger_Edit_Js('Settings_Webforms_Edit_Js', {}, {
 	registerClearReferenceSelectionEvent : function(container) {
 		container.on('click','.clearReferenceSelection', function(e){
 			var element = jQuery(e.currentTarget);
-			var parentTdElement = element.closest('td');
+			var parentTdElement = element.closest('div.width20-per');
 			var fieldNameElement = parentTdElement.find('.sourceField');
 			fieldNameElement.val('');
 			parentTdElement.find('.referenceFieldDisplay').removeAttr('readonly').removeAttr('value');

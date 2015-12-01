@@ -45,8 +45,8 @@
 					<a class="listViewHeaderValues">{vtranslate($LISTVIEW_HEADER->get('label'), $MODULE)}</a>
 				</th>
 				{/foreach}
-				<th>{vtranslate('LBL_MERGE_SELECT', $MODULE)}</th>
-				<th>{vtranslate('LBL_ACTION', $MODULE)}</th>
+				<th><a href="#">{vtranslate('LBL_MERGE_SELECT', $MODULE)}</a></th>
+				<th><a href="#">{vtranslate('LBL_ACTION', $MODULE)}</a></th>
 			</tr>
 		</thead>
 		{assign var=mergeRecordCount value=0}

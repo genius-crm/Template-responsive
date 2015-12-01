@@ -46,18 +46,22 @@
 		<div class="form-div contents-bottomscroll">
 		{foreach key=BLOCK_LABEL item=BLOCK_FIELDS from=$RECORD_STRUCTURE name="EditViewBlockLevelLoop"}
 			{if $BLOCK_FIELDS|@count lte 0}{continue}{/if}
-			<table class="table table-bordered blockContainer showInlineTable sadsda">
-			<tr>
-				<th class="blockHeader" colspan="4">{vtranslate($BLOCK_LABEL, $MODULE)}</th>
-			</tr>
+			<div class="table table-bordered blockContainer showInlineTable">
+            <div class="top_header_bar_drag">
+                <div class="main_heading">
+                    <div class="blockHeader" colspan="4">
+                            {vtranslate($BLOCK_LABEL, $MODULE)}
+                    </div>
+                </div>
+            </div>
 			{if ($BLOCK_LABEL eq 'LBL_ADDRESS_INFORMATION') and ($MODULE neq 'PurchaseOrder') }
-				<tr>
-				<td class="fieldLabel {$WIDTHTYPE}" name="copyHeader1">
+				<div class="detail-row-full">
+				<div class="width30-per fieldLabel {$WIDTHTYPE}" name="copyHeader1">
 					<label class="muted pull-right marginRight10px" name="togglingHeader">{vtranslate('LBL_BILLING_ADDRESS_FROM', $MODULE)}</label>
-				</td>
-				<td class="fieldValue {$WIDTHTYPE}" name="copyAddress1">
+				</div>
+				<div class="width20-per fieldValue {$WIDTHTYPE}" name="copyAddress1">
 					<div class="row-fluid">
-						<div class="span5">
+						<div class="span12">
 							<span class="row-fluid margin0px">
 								<label class="radio">
 								  <input type="radio" name="copyAddressFromRight" class="accountAddress" data-copy-address="billing" checked="">{vtranslate('SINGLE_Accounts', $MODULE)}
@@ -80,13 +84,13 @@
 							</span>
 						</div>
 					</div>
-				</td>
-				<td class="fieldLabel {$WIDTHTYPE}" name="copyHeader2">
-					<label class="muted pull-right marginRight10px" name="togglingHeader">{vtranslate('LBL_SHIPPING_ADDRESS_FROM', $MODULE)}</label>
-				</td>
-				<td class="fieldValue {$WIDTHTYPE}" name="copyAddress2">
+				</div>
+				<div class="width30-per fieldLabel {$WIDTHTYPE}" name="copyHeader2">
+					<label class="width30-per muted pull-right marginRight10px" name="togglingHeader">{vtranslate('LBL_SHIPPING_ADDRESS_FROM', $MODULE)}</label>
+				</div>
+				<div class="width20-per fieldValue {$WIDTHTYPE}" name="copyAddress2">
 					<div class="row-fluid">
-						<div class="span5">
+						<div class="span12">
 							<span class="row-fluid margin0px">
 								<label class="radio">
 								  <input type="radio" name="copyAddressFromLeft" class="accountAddress" data-copy-address="shipping" checked="">{vtranslate('SINGLE_Accounts', $MODULE)}
@@ -109,27 +113,27 @@
 							</span>
 						</div>
 					</div>
-				</td>
-			</tr>
+				</div>
+			</div>
 			{/if}
-			<tr>
+			<div>
 			{assign var=COUNTER value=0}
 			{foreach key=FIELD_NAME item=FIELD_MODEL from=$BLOCK_FIELDS name=blockfields}
 
 				{assign var="isReferenceField" value=$FIELD_MODEL->getFieldDataType()}
 				{if $FIELD_MODEL->get('uitype') eq "20" or $FIELD_MODEL->get('uitype') eq "19"}
 					{if $COUNTER eq '1'}
-						<td class="{$WIDTHTYPE}"></td><td class="{$WIDTH_TYPE_CLASSSES[$WIDTHTYPE]}"></td></tr><tr>
+						<div class="{$WIDTHTYPE}"></div><div class="{$WIDTH_TYPE_CLASSSES[$WIDTHTYPE]}"></div></div><div>
 						{assign var=COUNTER value=0}
 					{/if}
 				{/if}
 				{if $COUNTER eq 2}
-					</tr><tr>
+					</div><div>
 					{assign var=COUNTER value=1}
 				{else}
 					{assign var=COUNTER value=$COUNTER+1}
 				{/if}
-				<td class="fieldLabel {$WIDTHTYPE}">
+				<div class="width30-per fieldLabel {$WIDTHTYPE}">
 					{if $isReferenceField neq "reference"}<label class="muted pull-right marginRight10px">{/if}
 						{if $FIELD_MODEL->isMandatory() eq true && $isReferenceField neq "reference"} <span class="redColor">*</span> {/if}
 						{if $isReferenceField eq "reference"}
@@ -160,22 +164,22 @@
 							{vtranslate($FIELD_MODEL->get('label'), $MODULE)}
 						{/if}
 					{if $isReferenceField neq "reference"}</label>{/if}
-				</td>
+				</div>
 				{if $FIELD_MODEL->get('uitype') neq "83"}
-					<td class="fieldValue {$WIDTHTYPE}" {if $FIELD_MODEL->get('uitype') eq '19'} colspan="3" {assign var=COUNTER value=$COUNTER+1} {/if} {if $FIELD_MODEL->get('uitype') eq '20'} colspan="3"{/if}>
+					<div class="width20-per fieldValue {$WIDTHTYPE}" {if $FIELD_MODEL->get('uitype') eq '19'} colspan="3" {assign var=COUNTER value=$COUNTER+1} {/if} {if $FIELD_MODEL->get('uitype') eq '20'} colspan="3"{/if}>
 						{include file=vtemplate_path($FIELD_MODEL->getUITypeModel()->getTemplateName(),$MODULE) BLOCK_FIELDS=$BLOCK_FIELDS}
-					</td>
+					</div>
 				{/if}
 				{if $BLOCK_FIELDS|@count eq 1 and $FIELD_MODEL->get('uitype') neq "19" and $FIELD_MODEL->get('uitype') neq "20" and $FIELD_MODEL->get('uitype') neq "30" and $FIELD_MODEL->get('name') neq "recurringtype"}
-					<td class="{$WIDTHTYPE}"></td><td class="{$WIDTHTYPE}"></td>
+					<div class="{$WIDTHTYPE}"></div><div class="{$WIDTHTYPE}"></div>
 				{/if}
 			{/foreach}
 			{* adding additional column for odd number of fields in a block *}
 			{if $BLOCK_FIELDS|@end eq true and $BLOCK_FIELDS|@count neq 1 and $COUNTER eq 1}
-				<td class="fieldLabel {$WIDTHTYPE}"></td><td class="{$WIDTHTYPE}"></td>
+				<div class="fieldLabel {$WIDTHTYPE}"></div><div class="{$WIDTHTYPE}"></div>
 			{/if}
-			</tr>
-			</table>
+			</div>
+			</div>
 			<br>
 		{/foreach}
 		</div>

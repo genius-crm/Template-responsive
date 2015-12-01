@@ -41,24 +41,26 @@
 		</div>
 		<div>
 			{foreach key=BLOCK_LABEL item=BLOCK_FIELDS from=$RECORD_STRUCTURE}
-				<table class="table table-bordered marginLeftZero">
+				<div class="table table-bordered marginLeftZero">
 				{if $BLOCK_FIELDS|@count gt 0}
-				<tr class="listViewActionsDiv">
-					<th colspan="4">{vtranslate($BLOCK_LABEL, $MODULE)}</th>
-				</tr>
-				<tr>
+                <div class="listViewActionsDiv">
+                    <div class="main_heading">
+                        <div class="blockHeader" colspan="4">{vtranslate($BLOCK_LABEL, $MODULE)}</div>
+                    </div>
+                </div>
+				<div>
 				{assign var=COUNTER value=0}
 				{foreach key=FIELD_NAME item=FIELD_MODEL from=$BLOCK_FIELDS name=blockfields}
 					{assign var="isReferenceField" value=$FIELD_MODEL->getFieldDataType()}
 					{assign var="refrenceList" value=$FIELD_MODEL->getReferenceList()}
 					{assign var="refrenceListCount" value=count($refrenceList)}
 					{if $COUNTER eq 2}
-						</tr><tr>
+						</div><div>
 						{assign var=COUNTER value=1}
 					{else}
 						{assign var=COUNTER value=$COUNTER+1}
 					{/if}
-					<td class="fieldLabel {$WIDTHTYPE}">
+					<div class="width30-per fieldLabel {$WIDTHTYPE}">
 					{if {$isReferenceField} eq "reference"}
 						{if $refrenceListCount > 1}
 							<select style="width: 150px;" class="chzn-select" id="referenceModulesList">
@@ -74,29 +76,30 @@
 						{vtranslate($FIELD_MODEL->get('label'), $MODULE)}
 					{/if}
 					{if $FIELD_MODEL->isMandatory() eq true} <span class="redColor">*</span> {/if}
-					</td>
-					<td class="fieldValue {$WIDTHTYPE}" {if $FIELD_MODEL->get('uitype') eq '19'} colspan="3" {assign var=COUNTER value=$COUNTER+1} {/if}>
+					</div>
+					<div class="width20-per fieldValue {$WIDTHTYPE}" {if $FIELD_MODEL->get('uitype') eq '19'} colspan="3" {assign var=COUNTER value=$COUNTER+1} {/if}>
 						{include file=$FIELD_MODEL->getUITypeModel()->getTemplateName()|@vtemplate_path:$MODULE}
-					</td>
+					</div>
 				{/foreach}
-				</tr>
+				</div>
 				{/if}
-				</table>
+				</div>
                                 <br>
 			{/foreach}
 
-			{* tag cloud starts *}
-			<table class="table table-bordered marginLeftZero">
-				<tr class="listViewActionsDiv">
-					<th colspan="4">{vtranslate('LBL_TAG_CLOUD_DISPLAY', $MODULE)}</th>
-				</tr>
-				<tr>
-					<td class="fieldLabel {$WIDTHTYPE}">{vtranslate('LBL_TAG_CLOUD', $MODULE)}</td>
-					<td class="fieldValue {$WIDTHTYPE}">
+			<div class="table table-bordered marginLeftZero">
+            	<div class="listViewActionsDiv">
+                    <div class="main_heading">
+                        <div class="blockHeader" colspan="4">{vtranslate('LBL_TAG_CLOUD_DISPLAY', $MODULE)}</div>
+                    </div>
+                </div>
+				<div>
+					<div class="width30-per fieldLabel {$WIDTHTYPE}">{vtranslate('LBL_TAG_CLOUD', $MODULE)}</div>
+					<div class="width20-per fieldValue {$WIDTHTYPE}">
 						<label><input type="checkbox" name="tagcloudview" {if $TAG_CLOUD} checked {/if} /></label>
-					</td><td class="{$WIDTHTYPE}"></td><td class="{$WIDTHTYPE}"></td>
-				</tr>
-			</table>
+					</div><div class="{$WIDTHTYPE}"></div><div class="{$WIDTHTYPE}"></div>
+				</div>
+			</div>
                         <br>
 			{* tag cloud ends *}
 

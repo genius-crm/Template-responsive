@@ -1665,7 +1665,7 @@ jQuery.Class("Vtiger_List_Js",{
 				return;
 			}
 			fieldDisplayElement.attr('data-validation-engine', fieldDisplayElement.data('invalidValidationEngine'));
-            var parentTd = fieldDisplayElement.closest('td');
+            var parentTd = fieldDisplayElement.closest('div.width30-per');
             if(!parentTd.hasClass('massEditActiveField')){
                 parentTd.addClass('massEditActiveField');
             }
@@ -1675,7 +1675,7 @@ jQuery.Class("Vtiger_List_Js",{
 			var sourceFieldName = sourceField.attr('name');
 			var fieldDisplayName = sourceFieldName+"_display";
 			var fieldDisplayElement = form.find('input[name="'+fieldDisplayName+'"]').removeAttr('data-validation-engine');
-            var parentTd = fieldDisplayElement.closest('td');
+            var parentTd = fieldDisplayElement.closest('div.width20-per');
             if(parentTd.hasClass('massEditActiveField')){
                 parentTd.removeClass('massEditActiveField');
             }

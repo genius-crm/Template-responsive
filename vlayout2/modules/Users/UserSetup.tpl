@@ -19,12 +19,12 @@
 		<link REL="SHORTCUT ICON" HREF="layouts/vlayout/skins/images/favicon.ico">
 		<link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="resources/styles.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="libraries/jquery/select2/select2.css" />
+		<link rel="stylesheet" href="/layouts/vlayout2/custom-js/select2/select2.css" />
 		<link rel="stylesheet" href="libraries/jquery/posabsolute-jQuery-Validation-Engine/css/validationEngine.jquery.css" />
 
 		<script type="text/javascript" src="libraries/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="libraries/bootstrap/js/bootstrap-tooltip.js"></script>
-		<script type="text/javascript" src="libraries/jquery/select2/select2.min.js"></script>
+		<script type="text/javascript" src="/layouts/vlayout2/custom-js/select2/select2.min.js"></script>
 		<script type="text/javascript" src="libraries/jquery/posabsolute-jQuery-Validation-Engine/js/jquery.validationEngine.js" ></script>
 		<script type="text/javascript" src="libraries/jquery/posabsolute-jQuery-Validation-Engine/js/jquery.validationEngine-en.js" ></script>
 

@@ -820,7 +820,7 @@ jQuery.Class("Vtiger_Detail_Js",{
 			var currentTarget =  jQuery(e.currentTarget);
 			var blockId = currentTarget.data('id');
 			var closestBlock = currentTarget.closest('.detailview-table');
-			var bodyContents = closestBlock.find('tbody');
+			var bodyContents = closestBlock.find('div.drop_block_bottom_header');
 			var data = currentTarget.data();
 			var module = app.getModuleName();
 			var hideHandler = function() {
@@ -924,9 +924,16 @@ jQuery.Class("Vtiger_Detail_Js",{
 
 			var saveHandler = function(e) {
 				var element = jQuery(e.target);
+				
+				
 				if((element.closest('td').is(currentTdElement))){
 					return;
 				}
+				   
+				if((element.closest('div').is(currentTdElement))){
+					return;
+				}
+
 
 				currentTdElement.removeAttr('tabindex');
 
@@ -1027,7 +1034,7 @@ jQuery.Class("Vtiger_Detail_Js",{
 	triggerDisplayTypeEvent : function() {
 		var widthType = app.cacheGet('widthType', 'narrowWidthType');
 		if(widthType) {
-			var elements = jQuery('#detailView').find('td');
+			var elements = jQuery('#detailView').find('div.fieldLabel');
 			elements.addClass(widthType);
 		}
 	},
@@ -1557,6 +1564,9 @@ jQuery.Class("Vtiger_Detail_Js",{
 		var thisInstance = this;
 		var detailContentsHolder = thisInstance.getContentHolder();
 		var detailContainer = detailContentsHolder.closest('div.detailViewInfo');
+		app.registerEventForDatePickerFields(detailContentsHolder);
+		//Attach time picker event to time fields
+		app.registerEventForTimeFields(detailContentsHolder);
 
 		jQuery('.related', detailContainer).on('click', 'li', function(e, urlAttributes){
 			var tabElement = jQuery(e.currentTarget);
@@ -1577,9 +1587,6 @@ jQuery.Class("Vtiger_Detail_Js",{
 				function(data){
 					thisInstance.deSelectAllrelatedTabs();
 					thisInstance.markTabAsSelected(tabElement);
-                                        app.registerEventForDatePickerFields(detailContentsHolder);
-                                        //Attach time picker event to time fields
-                                        app.registerEventForTimeFields(detailContentsHolder);
 					Vtiger_Helper_Js.showHorizontalTopScrollBar();
 					element.progressIndicator({'mode': 'hide'});
 					if(typeof callBack == 'function'){
@@ -1819,6 +1826,8 @@ jQuery.Class("Vtiger_Detail_Js",{
 		detailContentsHolder.on('click', '#detailViewPreviousRecordButton', function(e){
 			var selectedTabElement = thisInstance.getSelectedTab();
 			var url = selectedTabElement.data('url');
+
+
 			var currentPageNum = thisInstance.getRelatedListCurrentPageNum();
 			var requestedPage = parseInt(currentPageNum)-1;
 			var params = {};
@@ -1826,7 +1835,7 @@ jQuery.Class("Vtiger_Detail_Js",{
 			thisInstance.loadContents(nextPageUrl);
 		});
 
-		detailContentsHolder.on('click','table.detailview-table td.fieldValue', function(e) {
+		detailContentsHolder.on('click','div.detailview-table div.fieldValue', function(e) {
 			var currentTdElement = jQuery(e.currentTarget);
 			thisInstance.ajaxEditHandling(currentTdElement);
 		});
